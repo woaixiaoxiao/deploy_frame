@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.16)
+project(kuiper_datawhale)
+
+add_subdirectory(course1)
+add_subdirectory(course2)
+add_subdirectory(course3)
+add_subdirectory(course4)
+add_subdirectory(course5)
+add_subdirectory(course6)
+add_subdirectory(course7)
+add_subdirectory(course8)
+#add_subdirectory(course9)
