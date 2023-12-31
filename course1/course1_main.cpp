@@ -13,6 +13,7 @@ int main(int argc, char *argv[]) {
     FLAGS_alsologtostderr = true;
     int a = 1;
     int b = 3;
+
     LOG(INFO) << "Start test...\n";
     return RUN_ALL_TESTS();
 }
