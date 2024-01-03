@@ -19,7 +19,8 @@ aux_source_directory(./source DIR_SOURCE_ARMA)
 aux_source_directory(./source/layer/abstract DIR_ABSTRACT_LAYER)
 aux_source_directory(./source/layer/details DIR_DETAIL_LAYER)
 
-add_executable(kuiper_datawhale_course5 main.cpp ${DIR_TEST_ARMA} ${DIR_SOURCE_ARMA} ${DIR_DETAIL_LAYER} ${DIR_ABSTRACT_LAYER})
+add_executable(kuiper_datawhale_course5 main.cpp ${DIR_TEST_ARMA} ${DIR_SOURCE_ARMA} ${DIR_DETAIL_LAYER} ${DIR_ABSTRACT_LAYER}
+        source/layer/details/sigmoid.hpp)
 target_link_libraries(kuiper_datawhale_course5 ${link_lib} ${link_math_lib} OpenMP::OpenMP_CXX)
 
 target_include_directories(kuiper_datawhale_course5 PUBLIC ${glog_INCLUDE_DIR})
