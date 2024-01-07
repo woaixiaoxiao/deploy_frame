@@ -233,7 +233,12 @@ void ConvolutionLayer::ConvGemmBias(const arma::fmat &input_matrix, sftensor out
             LOG(FATAL) << "Bias tensor is empty or nullptr";
         }
     } else {
+        //        LOG(INFO) << "----------------- start";
+        //        LOG(INFO) << kernel;
+        //        LOG(INFO) << input_matrix;
         output = kernel * input_matrix;
+        //        LOG(INFO) << output;
+        //        LOG(INFO) << "----------------- end";
     }
 }
 

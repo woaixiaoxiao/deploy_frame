@@ -38,90 +38,78 @@ namespace kuiper_infer {
  * 6.string array
  * 7.float array
  */
-struct RuntimeParameter {  /// 计算节点中的参数信息
-  virtual ~RuntimeParameter() = default;
+struct RuntimeParameter { /// 计算节点中的参数信息
+    virtual ~RuntimeParameter() = default;
 
-  explicit RuntimeParameter(
-      RuntimeParameterType type = RuntimeParameterType::kParameterUnknown)
-      : type(type) {}
-  RuntimeParameterType type = RuntimeParameterType::kParameterUnknown;
+    explicit RuntimeParameter(RuntimeParameterType type = RuntimeParameterType::kParameterUnknown)
+        : type(type) {}
+    RuntimeParameterType type = RuntimeParameterType::kParameterUnknown;
 };
 
 struct RuntimeParameterInt : public RuntimeParameter {
-  RuntimeParameterInt()
-      : RuntimeParameter(RuntimeParameterType::kParameterInt) {}
+    RuntimeParameterInt() : RuntimeParameter(RuntimeParameterType::kParameterInt) {}
 
-  explicit RuntimeParameterInt(int param_value)
-      : RuntimeParameter(RuntimeParameterType::kParameterInt),
-        value(param_value) {}
+    explicit RuntimeParameterInt(int param_value)
+        : RuntimeParameter(RuntimeParameterType::kParameterInt), value(param_value) {}
 
-  int value = 0;
+    int value = 0;
 };
 
 struct RuntimeParameterFloat : public RuntimeParameter {
-  RuntimeParameterFloat()
-      : RuntimeParameter(RuntimeParameterType::kParameterFloat) {}
+    RuntimeParameterFloat() : RuntimeParameter(RuntimeParameterType::kParameterFloat) {}
 
-  explicit RuntimeParameterFloat(float param_value)
-      : RuntimeParameter(RuntimeParameterType::kParameterFloat),
-        value(param_value) {}
+    explicit RuntimeParameterFloat(float param_value)
+        : RuntimeParameter(RuntimeParameterType::kParameterFloat), value(param_value) {}
 
-  float value = 0.f;
+    float value = 0.f;
 };
 
 struct RuntimeParameterString : public RuntimeParameter {
-  RuntimeParameterString()
-      : RuntimeParameter(RuntimeParameterType::kParameterString) {}
+    RuntimeParameterString() : RuntimeParameter(RuntimeParameterType::kParameterString) {}
 
-  explicit RuntimeParameterString(std::string param_value)
-      : RuntimeParameter(RuntimeParameterType::kParameterString),
-        value(std::move(param_value)) {}
+    explicit RuntimeParameterString(std::string param_value)
+        : RuntimeParameter(RuntimeParameterType::kParameterString), value(std::move(param_value)) {}
 
-  std::string value;
+    std::string value;
 };
 
 struct RuntimeParameterIntArray : public RuntimeParameter {
-  RuntimeParameterIntArray()
-      : RuntimeParameter(RuntimeParameterType::kParameterIntArray) {}
+    RuntimeParameterIntArray() : RuntimeParameter(RuntimeParameterType::kParameterIntArray) {}
 
-  explicit RuntimeParameterIntArray(std::vector<int> param_value)
-      : RuntimeParameter(RuntimeParameterType::kParameterIntArray),
-        value(std::move(param_value)) {}
+    explicit RuntimeParameterIntArray(std::vector<int> param_value)
+        : RuntimeParameter(RuntimeParameterType::kParameterIntArray),
+          value(std::move(param_value)) {}
 
-  std::vector<int> value;
+    std::vector<int> value;
 };
 
 struct RuntimeParameterFloatArray : public RuntimeParameter {
-  RuntimeParameterFloatArray()
-      : RuntimeParameter(RuntimeParameterType::kParameterFloatArray) {}
+    RuntimeParameterFloatArray() : RuntimeParameter(RuntimeParameterType::kParameterFloatArray) {}
 
-  explicit RuntimeParameterFloatArray(std::vector<float> param_value)
-      : RuntimeParameter(RuntimeParameterType::kParameterFloatArray),
-        value(std::move(param_value)) {}
+    explicit RuntimeParameterFloatArray(std::vector<float> param_value)
+        : RuntimeParameter(RuntimeParameterType::kParameterFloatArray),
+          value(std::move(param_value)) {}
 
-  std::vector<float> value;
+    std::vector<float> value;
 };
 
 struct RuntimeParameterStringArray : public RuntimeParameter {
-  RuntimeParameterStringArray()
-      : RuntimeParameter(RuntimeParameterType::kParameterStringArray) {}
+    RuntimeParameterStringArray() : RuntimeParameter(RuntimeParameterType::kParameterStringArray) {}
 
-  explicit RuntimeParameterStringArray(std::vector<std::string> param_value)
-      : RuntimeParameter(RuntimeParameterType::kParameterStringArray),
-        value(std::move(param_value)) {}
+    explicit RuntimeParameterStringArray(std::vector<std::string> param_value)
+        : RuntimeParameter(RuntimeParameterType::kParameterStringArray),
+          value(std::move(param_value)) {}
 
-  std::vector<std::string> value;
+    std::vector<std::string> value;
 };
 
 struct RuntimeParameterBool : public RuntimeParameter {
-  RuntimeParameterBool()
-      : RuntimeParameter(RuntimeParameterType::kParameterBool) {}
+    RuntimeParameterBool() : RuntimeParameter(RuntimeParameterType::kParameterBool) {}
 
-  explicit RuntimeParameterBool(bool param_value)
-      : RuntimeParameter(RuntimeParameterType::kParameterBool),
-        value(param_value) {}
+    explicit RuntimeParameterBool(bool param_value)
+        : RuntimeParameter(RuntimeParameterType::kParameterBool), value(param_value) {}
 
-  bool value = false;
+    bool value = false;
 };
-}  // namespace kuiper_infer
-#endif  // KUIPER_INFER_INCLUDE_PARSER_RUNTIME_PARAMETER_HPP_
+} // namespace kuiper_infer
+#endif // KUIPER_INFER_INCLUDE_PARSER_RUNTIME_PARAMETER_HPP_

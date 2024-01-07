@@ -18,7 +18,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-    
+
 // Created by fss on 22-11-13.
 
 #ifndef KUIPER_INFER_SOURCE_LAYER_SOFTMAX_HPP_
@@ -27,20 +27,18 @@
 
 namespace kuiper_infer {
 class SoftmaxLayer : public NonParamLayer {
- public:
-  explicit SoftmaxLayer(int dim = -1);
+public:
+    explicit SoftmaxLayer(int dim = -1);
 
-  InferStatus Forward(
-      const std::vector<std::shared_ptr<Tensor<float>>>& inputs,
-      std::vector<std::shared_ptr<Tensor<float>>>& outputs) override;
+    InferStatus Forward(const std::vector<std::shared_ptr<Tensor<float>>> &inputs,
+                        std::vector<std::shared_ptr<Tensor<float>>> &outputs) override;
 
-  static ParseParameterAttrStatus CreateInstance(
-      const std::shared_ptr<RuntimeOperator>& op,
-      std::shared_ptr<Layer>& softmax_layer);
+    static ParseParameterAttrStatus CreateInstance(const std::shared_ptr<RuntimeOperator> &op,
+                                                   std::shared_ptr<Layer> &softmax_layer);
 
- private:
-  int softmax_dim_ = -1;
+private:
+    int softmax_dim_ = -1;
 };
-}  // namespace kuiper_infer
+} // namespace kuiper_infer
 
-#endif  // KUIPER_INFER_SOURCE_LAYER_SOFTMAX_HPP_
+#endif // KUIPER_INFER_SOURCE_LAYER_SOFTMAX_HPP_

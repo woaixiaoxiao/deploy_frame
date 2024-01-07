@@ -71,11 +71,9 @@ TEST(test_expression, complex2) {
     using namespace kuiper_infer;
     const std::string &str = "mul(@1,sin(@0))";
     ExpressionLayer layer(str);
-    std::shared_ptr<Tensor<float>> input1 =
-            std::make_shared<Tensor<float>>(3, 224, 224);
+    std::shared_ptr<Tensor<float>> input1 = std::make_shared<Tensor<float>>(3, 224, 224);
     input1->Fill(2.f); // @0
-    std::shared_ptr<Tensor<float>> input2 =
-            std::make_shared<Tensor<float>>(3, 224, 224);
+    std::shared_ptr<Tensor<float>> input2 = std::make_shared<Tensor<float>>(3, 224, 224);
     input2->Fill(3.f); //@1
 
     std::vector<std::shared_ptr<Tensor<float>>> inputs;
@@ -85,16 +83,15 @@ TEST(test_expression, complex2) {
     std::vector<std::shared_ptr<Tensor<float>>> outputs(1);
     outputs.at(0) = std::make_shared<Tensor<float>>(3, 224, 224);
     const auto status = layer.Forward(inputs, outputs);
+    //    LOG(INFO) << outputs.at(0)->data();
     ASSERT_EQ(status, InferStatus::kInferSuccess);
     ASSERT_EQ(outputs.size(), 1);
 
     float val = 2.f;
     float res = std::sin(val) * 3.f;
-    std::shared_ptr<Tensor<float>> output2 =
-            std::make_shared<Tensor<float>>(3, 224, 224);
+    std::shared_ptr<Tensor<float>> output2 = std::make_shared<Tensor<float>>(3, 224, 224);
     output2->Fill(res);
     std::shared_ptr<Tensor<float>> output1 = outputs.front();
 
-    ASSERT_TRUE(
-            arma::approx_equal(output1->data(), output2->data(), "absdiff", 1e-3));
+    ASSERT_TRUE(arma::approx_equal(output1->data(), output2->data(), "absdiff", 1e-3));
 }
